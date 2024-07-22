@@ -21,7 +21,7 @@ $contactNumber = $_POST['contactNumber'];
 $results = $_POST['results'];
 $labtech = $_POST['labTech'];
 
-$sql = "UPDATE patients SET firstName='$FirstName', firstName='$LastName', dob='$DateOfBirth', gender='$Gender', contactNumber='$ContactNumber', results='$Results', labTech='$LabTechnician' WHERE patientID=$PatientID";
+$sql = "UPDATE patients SET firstName='$FirstName', firstName='$LastName', dob='$DateOfBirth', gender='$Gender', contactNumber='$ContactNumber', results='$Results', labTech='$LabTechnician' WHERE patientID=$patientID";
 
 if ($conn->query($sql) === TRUE) {
     echo "Patient record updated successfully";
