@@ -12,16 +12,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$PatientID = $_POST['PatientID'];
-$FirstName = $_POST['FirstName'];
-$LastName = $_POST['LastName'];
-$dob = $_POST['DateOfBirth'];
-$gender = $_POST['Gender'];
-$contactNumber = $_POST['ContactNumber'];
-$results = $_POST['Results'];
-$labtech = $_POST['LabTechnician'];
+$PatientID = $_POST['patientID'];
+$FirstName = $_POST['firstName'];
+$LastName = $_POST['lastName'];
+$dob = $_POST['dob'];
+$gender = $_POST['gender'];
+$contactNumber = $_POST['contactNumber'];
+$results = $_POST['results'];
+$labtech = $_POST['labTech'];
 
-$sql = "UPDATE patients SET FirstName='$FirstName', LastName='$LastName', DateOfBirth='$DateOfBirth', Gender='$Gender', ContactNumber='$ContactNumber', Results='$Results', LabTechnician='$LabTechnician' WHERE PatientID=$PatientID";
+$sql = "UPDATE patients SET firstName='$FirstName', firstName='$LastName', dob='$DateOfBirth', gender='$Gender', contactNumber='$ContactNumber', results='$Results', labTech='$LabTechnician' WHERE patientID=$PatientID";
 
 if ($conn->query($sql) === TRUE) {
     echo "Patient record updated successfully";
