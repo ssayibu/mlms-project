@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$patientId = $_GET['patientid'];
+$PatientID = $_GET['PatientID'];
 
 $sql = "SELECT * FROM patients WHERE PatientID = ?";
 $stmt = $conn->prepare($sql);
