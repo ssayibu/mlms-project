@@ -10,7 +10,7 @@
 
         function generatePatientID() {
             const PatientIDInput = document.getElementById('PatientID');
-            const prefix = "ML-PT/24/";
+            const prefix = "MLPT/24/";
             const idNumber = String(PatientIDCounter).padStart(4, '0');  // Pad with leading zeros
             PatientIDInput.value = prefix + idNumber;
         }
