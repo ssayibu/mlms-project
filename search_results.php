@@ -1,53 +1,70 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "medical_lab";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.php">Home</a>
+        <a href="add_patient.php">Add Patient</a>
+        <a href="search_patient.php">Search Patient</a>
+    </div>
+    <div class="container">
+        <h1>Search Results</h1>
+        <?php
+        $servername = "db";
+        $username = "labtech";
+        $password = "buaE41oSbktcPiA9uuTc";
+        $dbname = "medical_lab";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-$patientID = $_POST['patientID'];
+        $PatientID = $_POST['PatientID'];
 
-$sql = "SELECT * FROM patients WHERE PatientID = $patientID";
-$result = $conn->query($sql);
+        $sql = "SELECT * FROM patients WHERE PatientID = $PatientID";
+        $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "<form action='update_patient.php' method='post'>";
-        echo "<label for='firstName'>First Name:</label>";
-        echo "<input type='text' id='firstName' name='firstName' value='" . $row['FirstName'] . "' required><br><br>";
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<form action='update_patient.php' method='post'>";
+                echo "<label for='FirstName'>First Name:</label>";
+                echo "<input type='text' id='FirstName' name='FirstName' value='" . $row['FirstName'] . "' required><br><br>";
 
-        echo "<label for='lastName'>Last Name:</label>";
-        echo "<input type='text' id='lastName' name='lastName' value='" . $row['LastName'] . "' required><br><br>";
+                echo "<label for='LastName'>Last Name:</label>";
+                echo "<input type='text' id='LastName' name='LastName' value='" . $row['LastName'] . "' required><br><br>";
 
-        echo "<label for='dob'>Date of Birth:</label>";
-        echo "<input type='date' id='dob' name='dob' value='" . $row['DateOfBirth'] . "' required><br><br>";
+                echo "<label for='DateOfBirth'>Date of Birth:</label>";
+                echo "<input type='date' id='DateOfBirth' name='DateOfBirth' value='" . $row['DateOfBirth'] . "' required><br><br>";
 
-        echo "<label for='gender'>Gender:</label>";
-        echo "<input type='text' id='gender' name='gender' value='" . $row['Gender'] . "' required><br><br>";
+                echo "<label for='Gender'>Gender:</label>";
+                echo "<input type='text' id='Gender' name='Gender' value='" . $row['Gender'] . "' required><br><br>";
 
-        echo "<label for='contactNumber'>Contact Number:</label>";
-        echo "<input type='text' id='contactNumber' name='contactNumber' value='" . $row['ContactNumber'] . "' required><br><br>";
+                echo "<label for='ContactNumber'>Contact Number:</label>";
+                echo "<input type='text' id='ContactNumber' name='ContactNumber' value='" . $row['ContactNumber'] . "' required><br><br>";
 
-        echo "<label for='email'>Email:</label>";
-        echo "<input type='email' id='email' name='email' value='" . $row['Email'] . "' required><br><br>";
+                echo "<label for='Results'>Results:</label>";
+                echo "<input type='text' id='Results' name='Results' value='" . $row['Results'] . "' required><br><br>";
 
-        echo "<label for='address'>Address:</label>";
-        echo "<textarea id='address' name='address' required>" . $row['Address'] . "</textarea><br><br>";
+                echo "<label for='LabTechnician'>Lab Technician:</label>";
+                echo "<textarea id='LabTechnician' name='LabTechnician' required>" . $row['LabTechnician'] . "</textarea><br><br>";
 
-        echo "<input type='hidden' name='patientID' value='" . $row['PatientID'] . "'>";
-        echo "<input type='submit' value='Update'>";
-        echo "</form>";
-    }
-} else {
-    echo "No records found";
-}
+                echo "<input type='hidden' name='PatientID' value='" . $row['PatientID'] . "'>";
+                echo "<input type='submit' value='Update'>";
+                echo "</form>";
+            }
+        } else {
+            echo "No records found";
+        }
 
-$conn->close();
-?>
+        $conn->close();
+        ?>
+    </div>
+</body>
+</html>

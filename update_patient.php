@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "db";
+$username = "labtech";
+$password = "buaE41oSbktcPiA9uuTc";
 $dbname = "medical_lab";
 
 // Create connection
@@ -12,16 +12,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$patientID = $_POST['patientID'];
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$dob = $_POST['dob'];
-$gender = $_POST['gender'];
-$contactNumber = $_POST['contactNumber'];
-$email = $_POST['email'];
-$address = $_POST['address'];
+$PatientID = $_POST['PatientID'];
+$FirstName = $_POST['FirstName'];
+$LastName = $_POST['LastName'];
+$dob = $_POST['DateOfBirth'];
+$gender = $_POST['Gender'];
+$contactNumber = $_POST['ContactNumber'];
+$results = $_POST['Results'];
+$labtech = $_POST['LabTechnician'];
 
-$sql = "UPDATE patients SET FirstName='$firstName', LastName='$lastName', DateOfBirth='$dob', Gender='$gender', ContactNumber='$contactNumber', Email='$email', Address='$address' WHERE PatientID=$patientID";
+$sql = "UPDATE patients SET FirstName='$FirstName', LastName='$LastName', DateOfBirth='$DateOfBirth', Gender='$Gender', ContactNumber='$ContactNumber', Results='$Results', LabTechnician='$LabTechnician' WHERE PatientID=$PatientID";
 
 if ($conn->query($sql) === TRUE) {
     echo "Patient record updated successfully";

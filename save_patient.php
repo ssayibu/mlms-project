@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "db";
+$username = "labtech";
+$password = "buaE41oSbktcPiA9uuTc";
 $dbname = "medical_lab";
 
 // Create connection
@@ -12,16 +12,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$dob = $_POST['dob'];
-$gender = $_POST['gender'];
-$contactNumber = $_POST['contactNumber'];
-$email = $_POST['email'];
-$address = $_POST['address'];
+$PatientID = $_POST['PatientID'];
+$FirstName = $_POST['FirstName'];
+$LastName = $_POST['LastName'];
+$DateOfBirth = $_POST['DateOfBirth'];
+$Gender = $_POST['Gender'];
+$ContactNumber = $_POST['ContactNumber'];
+$Results = $_POST['Results'];
+$LabTechnician = $_POST['LabTechnician'];
 
-$sql = "INSERT INTO patients (FirstName, LastName, DateOfBirth, Gender, ContactNumber, Email, Address)
-VALUES ('$firstName', '$lastName', '$dob', '$gender', '$contactNumber', '$email', '$address')";
+$sql = "INSERT INTO patients (PatientID, FirstName, LastName, DateOfBirth, Gender, ContactNumber, Results, LabTechnician)
+VALUES ('$PatientID', '$FirstName', '$LastName', '$DateOfBirth', '$Gender', '$ContactNumber', '$Results', '$LabTechnician')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New patient record created successfully";
