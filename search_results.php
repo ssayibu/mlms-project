@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
         echo "Lab Technician: " . $row["LabTechnician"] . "<br>";
     }
 } else {
-    echo "No patient found with the given ID.";
+    echo "No patient found with the given Patient ID.";
 }
 
 $stmt->close();
