@@ -15,9 +15,9 @@
     <div class="container">
         <h1>Search Results</h1>
         <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
+        $servername = "db";
+        $username = "labtech";
+        $password = "buaE41oSbktcPiA9uuTc";
         $dbname = "medical_lab";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
