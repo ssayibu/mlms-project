@@ -15,8 +15,8 @@
     <div class="container">
         <h1>Search Patient</h1>
         <form action="search_results.php" method="post">
-            <label for="PatientID">Patient ID:</label>
-            <input type="text" id="PatientID" name="PatientID" required><br><br>
+            <label for="patientID">Enter Patient ID:</label>
+            <input type="text" id="patientID" name="patientID" required>
             <input type="submit" value="Search">
         </form>
     </div>
