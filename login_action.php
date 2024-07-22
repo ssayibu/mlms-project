@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "db";
+$username = "labtech";
+$password = "buaE41oSbktcPiA9uuTc";
 $dbname = "medical_lab";
 
 // Create connection
