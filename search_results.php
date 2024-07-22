@@ -16,7 +16,7 @@ $PatientID = $_GET['PatientID'];
 
 $sql = "SELECT * FROM patients WHERE PatientID = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $patientId);
+$stmt->bind_param("s", $PatientID);
 $stmt->execute();
 $result = $stmt->get_result();
 
