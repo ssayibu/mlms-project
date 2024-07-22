@@ -12,22 +12,32 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$PatientID = $_POST['PatientID'];
-$FirstName = $_POST['FirstName'];
-$LastName = $_POST['LastName'];
-$dob = $_POST['DateOfBirth'];
-$gender = $_POST['Gender'];
-$contactNumber = $_POST['ContactNumber'];
-$results = $_POST['Results'];
-$labtech = $_POST['LabTechnician'];
+// Get the data from the form
+$patientID = $_POST['patientID'];
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
+$dob = $_POST['dob'];
+$gender = $_POST['gender'];
+$contactNumber = $_POST['contactNumber'];
+$results = $_POST['results'];
+$labtech = $_POST['labtech'];
 
-$sql = "UPDATE patients SET FirstName='$FirstName', LastName='$LastName', DateOfBirth='$DateOfBirth', Gender='$Gender', ContactNumber='$ContactNumber', Results='$Results', LabTechnician='$LabTechnician' WHERE PatientID=$PatientID";
+// Prepare and execute the SQL query
+$sql = "UPDATE patients SET FirstName=?, LastName=?, DateOfBirth=?, Gender=?, ContactNumber=?, Results=?, LabTechnician=? WHERE PatientID=?";
+$stmt = $conn->prepare($sql);
 
-if ($conn->query($sql) === TRUE) {
-    echo "Patient record updated successfully";
-} else {
-    echo "Error updating record: " . $conn->error;
+if ($stmt === false) {
+    die("Error preparing statement: " . $conn->error);
 }
 
+$stmt->bind_param("ssssssss", $firstName, $lastName, $dob, $gender, $contactNumber, $results, $labtech, $patientID);
+
+if ($stmt->execute()) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $stmt->error;
+}
+
+$stmt->close();
 $conn->close();
 ?>
