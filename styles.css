@@ -5,6 +5,10 @@ body {
     padding: 0;
 }
 
+h1 {
+    text-align: center;
+}
+
 .navbar {
     overflow: hidden;
     background-color: #333;
