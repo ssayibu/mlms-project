@@ -31,7 +31,7 @@
         <h1>PREGNANCY TEST</h1>
         <form action="save_patient.php" method="post">
             <label for="PatientID">Patient ID:</label>
-            <input type="text" id="PatientID" name="PatientID" readonly><br><br>
+            <input type="text" id="PatientID" name="PatientID" required><br><br>
 
             <label for="FirstName">First Name:</label>
             <input type="text" id="FirstName" name="FirstName" required><br><br>
