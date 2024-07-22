@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $servername = "db";
 $username = "labtech";
 $password = "buaE41oSbktcPiA9uuTc";
