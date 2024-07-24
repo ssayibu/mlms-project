@@ -8,8 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    && apt-get apache2 -y \
-    && apt-get libapache2-mod-php -y \
+    apache2 \
+    libapache2-mod-php \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -30,4 +30,4 @@ RUN a2enmod php7.4
 EXPOSE 80
 
 # Start Apache in the foreground
-CMD ["apachectl", "-D", "FOREGROUND"]
+CMD ["apache2-foreground"]
