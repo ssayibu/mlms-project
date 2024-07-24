@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:7.4-apache
 
 # Set non-interactive mode for apt-get
 ENV DEBIAN_FRONTEND=noninteractive
@@ -7,7 +7,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    apache2 \
     libapache2-mod-fcgid \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -27,9 +26,5 @@ RUN echo "AddHandler php7-script .php" >> /etc/apache2/apache2.conf && \
 # Expose port 80
 EXPOSE 80
 
-# Copy the startup script to start both Apache and PHP-FPM
-COPY start-apache-fpm.sh /usr/local/bin/start-apache-fpm.sh
-RUN chmod +x /usr/local/bin/start-apache-fpm.sh
-
-# Set the default command to run the startup script
-CMD ["start-apache-fpm.sh"]
+# Set the default command to run when starting the container
+CMD ["apache2-foreground"]
