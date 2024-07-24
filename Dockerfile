@@ -1,4 +1,4 @@
-FROM php:7.4-cli
+FROM php:7.4-fpm
 
 # Set non-interactive mode for apt-get
 ENV DEBIAN_FRONTEND=noninteractive
@@ -8,12 +8,6 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
     apache2 \
-    && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# Configure Apache to use PHP-FPM
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
     libapache2-mod-fcgid \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -29,9 +23,6 @@ RUN echo "AddHandler php7-script .php" >> /etc/apache2/apache2.conf && \
     echo "<Directory /usr/lib/cgi-bin>" >> /etc/apache2/apache2.conf && \
     echo "    Require all granted" >> /etc/apache2/apache2.conf && \
     echo "</Directory>" >> /etc/apache2/apache2.conf
-
-# Start PHP-FPM service
-RUN service php7.4-fpm start
 
 # Set the default command to run when starting the container
 CMD ["apache2-foreground"]
