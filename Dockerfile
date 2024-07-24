@@ -8,8 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    apache2 \
-    libapache2-mod-php \
+    && apt-get apache2 -y \
+    && apt-get libapache2-mod-php -y \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
