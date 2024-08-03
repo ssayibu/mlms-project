@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +15,7 @@ if (!isset($_SESSION['username'])) {
     <div class="container">
         <h1>Search Results</h1>
         <?php
-        $servername = "db";
+        $servername = "localhost";
         $username = "labtech";
         $password = "buaE41oSbktcPiA9uuTc";
         $dbname = "medical_lab";

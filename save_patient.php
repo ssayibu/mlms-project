@@ -1,5 +1,5 @@
 <?php
-$servername = "db";
+$servername = "localhost";
 $username = "labtech";
 $password = "buaE41oSbktcPiA9uuTc";
 $dbname = "medical_lab";
